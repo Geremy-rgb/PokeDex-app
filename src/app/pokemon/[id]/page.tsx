@@ -1,7 +1,7 @@
 
 interface PageProps {
     params: {
-      id: number;
+      id: string;
     };
   }
 
