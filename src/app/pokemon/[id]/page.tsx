@@ -1,10 +1,4 @@
 
-interface PageProps {
-    params: {
-      id: string;
-    };
-  }
-
 interface PokemonType {
     slot: number;
     type: {
@@ -14,7 +8,7 @@ interface PokemonType {
   }
   
   interface Pokemon {
-    id: number;
+    id: string;
     name: string;
     types: PokemonType[];
     sprites: {
@@ -26,7 +20,11 @@ interface PokemonType {
     };
   }
   
-  export default async function PokemonPage({ params }: PageProps) {
+  export default async function PokemonPage({
+    params,
+  }: {
+    params: { id: string };
+  }) {
 
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`);
     const pokemon : Pokemon = await res.json();
